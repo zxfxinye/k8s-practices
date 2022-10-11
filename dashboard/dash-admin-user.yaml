@@ -3,6 +3,7 @@ kind: ServiceAccount
 metadata:
   name: admin-user
   namespace: kubernetes-dashboard
+  secret: admin-user
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
