@@ -3,11 +3,14 @@ kind: VirtualService
 metadata:
   name: sidecar
 spec:
+  gateways:
+    - nginx-gateway
   hosts:
     - nginx-basic
   http:
     - match:
-        - port: 80
+        - uri:
+            prefix: /mn
       route:
         - destination:
             host: nginx-basic
