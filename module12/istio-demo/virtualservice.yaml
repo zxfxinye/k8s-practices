@@ -7,12 +7,25 @@ spec:
     - nginx-gateway
   hosts:
     - nginx-basic
+    - httpserver.com
   http:
     - match:
         - uri:
-            prefix: /mn
+            prefix: /mnq
+        rewrite:
+          - uri: "/"
       route:
         - destination:
             host: nginx-basic
+            port:
+              number: 80
+    - match:
+        - uri:
+            exact: "/simple/hello"
+        rewrite:
+          uri: "/hello"
+      route:
+        - destination:
+            host: httpserver.default.svc.clusster.local
             port:
               number: 80
